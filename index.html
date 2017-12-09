@@ -1,3 +1,5 @@
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash -->
+
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +17,18 @@
             background-image: url('http://www.animatieplaatjes.nl/achtergronden/sinterklaasachtergrond5.jpg');
             background-repeat: no-repeat;
             background-position: right bottom;
+        }
+
+        .blauw {
+          color: blue;
+        }
+
+        .groen {
+          color: green;
+        }
+
+        .roze {
+          color: magenta;
         }
 
         .poem {
@@ -77,25 +91,25 @@
     <p>Je weet wat ik bedoel, we gaan een korte Escape Room spelen</p>
     <p>Het zal je vast lukken, anders heb je hier zitten, altijd nog de kennis van velen</p>
     <br>
-    <p>De eerste hint is een makkie voor een meisje met jouw kennis</p>
-    <p>Dit hoort duidelijk in jouw vakgebied, als Federer bij tennis</p>
-    <p>Het antwoord op deze tip schud jij met gemak uit je mouw</p>
-    <p>Dus begin nu maar met zoeken naar een canvas beschreven met blauw</p>
+    <p class="blauw">De eerste hint is een makkie voor een meisje met jouw kennis</p>
+    <p class="blauw">Dit hoort duidelijk in jouw vakgebied, als Federer bij tennis</p>
+    <p class="blauw">Het antwoord op deze tip schud jij met gemak uit je mouw</p>
+    <p class="blauw">Dus begin nu maar met zoeken naar een canvas beschreven met blauw</p>
     <br>
-    <p>Je middelste getal, daarbij gaat het om driekwart tijd</p>
-    <p>Ga er maar goed voor zitten, daar waar men geen honger lijdt</p>
-    <p>Ga maar beginnen met scheuren, je weet wat je moet doen</p>
-    <p>Denk aan iemand om je heen, zijn lievelingkleur is groen</p>
+    <p class="groen">Je middelste getal, daarbij gaat het om driekwart tijd</p>
+    <p class="groen">Ga er maar goed voor zitten, daar waar men geen honger lijdt</p>
+    <p class="groen">Ga maar beginnen met scheuren, je weet wat je moet doen</p>
+    <p class="groen">Denk aan iemand om je heen, zijn lievelingkleur is groen</p>
     <br>
-    <p>Het derde en laatste getal geeft zich toch anders aan jou bloot</p>
-    <p>Dit gebruikt men altijd zittend op stoeltjes van rood</p>
-    <p>Dit is waar het eindigt. Dit is waar het stopt</p>
-    <p>Ga maar gauw zoeken voordat het popt</p>
+    <p class="roze">Het derde en laatste getal geeft zich toch anders aan jou bloot</p>
+    <p class="roze">Dit gebruikt men altijd zittend op stoeltjes van roze of rood</p>
+    <p class="roze">Dit is waar het eindigt. Dit is waar het stopt</p>
+    <p class="roze">Ga maar gauw zoeken voordat het popt</p>
     <br>
-    <p></p>
-
-
-
+    <p>Weet je het echt niet en wil je niet verliezen?</p>
+    <p>Zoek dan in deze dikke computer voor wat adviezen</p>
+    <p>Het is een beetje valsspelen dus gebruik het alleen als allerlaatstse hint</p>
+    <p>Maar mocht je ervoor kiezen zal ik je natuurlijk vergeven. Liefs Piet en Sint</p>
   </div>
 
     <div class="form"> <label for="guessField">Raad maar lekker. Anders krijg je na 10 pogingen de juiste code cadeau: </label><input type="text" id="guessField" class="guessField"> <input type="submit" value="Proberen?" class="guessSubmit"> </div>
@@ -125,7 +139,7 @@
       guesses.textContent += userGuess + ' ';
 
       if (userGuess === randomNumber) {
-        lastResult.textContent = 'Gefeliciteerd! Je cadeautje ligt achterin de schuur.';
+        lastResult.textContent = 'Gefeliciteerd! Ik zou me maar verkassen, want jouw cadeautje, die ligt boven de jassen.';
         lastResult.style.backgroundColor = 'green';
         lowOrHi.textContent = '';
         setGameOver();
@@ -147,7 +161,7 @@
       guessField.disabled = true;
       guessSubmit.disabled = true;
       resetButton = document.createElement('button');
-      resetButton.textContent = 'Start new game';
+      resetButton.textContent = 'Speel opnieuw';
       document.body.appendChild(resetButton);
       resetButton.addEventListener('click', resetGame);
     }
