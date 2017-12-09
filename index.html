@@ -1,0 +1,167 @@
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sinterklaas</title>
+    <style>
+        html {
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            color: yellow;
+            background-color: rgb(242, 19, 20);
+            background-image: url('http://www.animatieplaatjes.nl/achtergronden/sinterklaasachtergrond5.jpg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+        }
+
+        .poem {
+          margin-top: 5rem;
+          margin-bottom: 5rem;
+        }
+
+        body {
+            width: 50%;
+            max-width: 800px;
+            min-width: 480px;
+            margin: 0 auto;
+        }
+
+        .lastResult {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="poem">
+    <h3>Dear Demi Koit from Papendrecht</h3>
+    <p>Glad to see you here again and that meen ik oprecht</p>
+    <p>I hurt you got jor propadeuse for jor study in Eindhoven</p>
+    <p>In 1 year I hurt! That is toch niet te geloven</p>
+    <p>You worked your ass off day in, day out</p>
+    <p>You deserve it helemaal so scream it out loud</p>
+    <br>
+    <p>You can see, from English I understand not a hol</p>
+    <p>Ik zal maar stoppen. Ik hou het wel bij mijn <i>Holandés y Español</i></p>
+    <p>Hoe heb je dat geflikt? Een jaar lang les in een vreemde taal?</p>
+    <p>Dat kan toch niet! Hoe doe je dat allemaal?</p>
+    <p>Engels is niet eens het enige, nee!</p>
+    <p>Ook programmeertalen stromen uit de toetsen van je HP</p>
+    <br>
+    <p>Naast de uni hoorde ik over groot een blamage</p>
+    <p>Je bent weg bij het Rotterdamse Bram Ladage!</p>
+    <p>Je hebt de frituur verruild voor de Eindhovense Airfryers heb ik vernomen</p>
+    <p>Aangenomen bij de Blokker om geld binnen te laten stromen</p>
+    <p>Hoe vind je het nou, een jaar in de gekste?</p>
+    <p>Word je niet moe van al die honderen pagina's aan codes en teksten</p>
+    <br>
+    <p>Jij kan er tegen, dat heb je aan iedereen laten zien</p>
+    <p>Met grote waardering je propadeuse en voor App Programming bijna een 10</p>
+    <p>Zoals je ziet, ik probeer er zelf ook wat bij te leren</p>
+    <p>Wel op mijn oude appeltje en googel "hoe kan je coderen"</p>
+    <p>Ik hoorde dat je tutor wilde worden vanwege je succes</p>
+    <p>Misschien mag ik in de klas zitten om te leren over je HTML en CSS?</p>
+    <br>
+    <p>Niet alleen geniet jij van Netflix en programma's maken</p>
+    <p>In jouw spel moet je goed nadenken om de code te kraken</p>
+    <p>Speciaal voor jouw heeft Piet dus wat in elkaar gezet</p>
+    <p>Gebruikmakend van hints in elk hiernavolgend couplet</p>
+    <p>Je weet wat ik bedoel, we gaan een korte Escape Room spelen</p>
+    <p>Het zal je vast lukken, anders heb je hier zitten, altijd nog de kennis van velen</p>
+    <br>
+    <p>De eerste hint is een makkie voor een meisje met jouw kennis</p>
+    <p>Dit hoort duidelijk in jouw vakgebied, als Federer bij tennis</p>
+    <p>Het antwoord op deze tip schud jij met gemak uit je mouw</p>
+    <p>Dus begin nu maar met zoeken naar een canvas beschreven met blauw</p>
+    <br>
+    <p>Voor het middelste getal moet je toch iets anders doen</p>
+    <p></p>
+    <p>vrdat eht popt</p>
+    <p>stopt</p>
+    <br>
+    <p></p>
+
+
+  </div>
+
+    <div class="form"> <label for="guessField">Raad maar lekker. Na 10 pogingen help ik je wel: </label><input type="text" id="guessField" class="guessField"> <input type="submit" value="Proberen?" class="guessSubmit"> </div>
+    <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+    </div>
+</body>
+<script>
+    // Your JavaScript goes here
+    var randomNumber = 512;
+    var guesses = document.querySelector('.guesses');
+    var lastResult = document.querySelector('.lastResult');
+    var lowOrHi = document.querySelector('.lowOrHi');
+    var guessSubmit = document.querySelector('.guessSubmit');
+    var guessField = document.querySelector('.guessField');
+    var guessCount = 1;
+    var resetButton;
+
+    function checkGuess() {
+      var userGuess = Number(guessField.value);
+      if (guessCount === 1) {
+        guesses.textContent = 'Previous guesses: ';
+      }
+
+      guesses.textContent += userGuess + ' ';
+
+      if (userGuess === randomNumber) {
+        lastResult.textContent = 'Gefeliciteerd! Je cadeautje ligt achterin de schuur.';
+        lastResult.style.backgroundColor = 'green';
+        lowOrHi.textContent = '';
+        setGameOver();
+      } else if (guessCount >= 10) {
+        lastResult.textContent = 'Dat is ook fout. Typ 512 :) Dat is MIJN dag!';
+        lowOrHi.textContent = '';
+      } else {
+        lastResult.textContent = 'Sorry, dat klopt helaas niet.';
+        lastResult.style.backgroundColor = 'red';
+      }
+
+      guessCount++;
+      guessField.value = '';
+    }
+
+    guessSubmit.addEventListener('click', checkGuess);
+
+    function setGameOver() {
+      guessField.disabled = true;
+      guessSubmit.disabled = true;
+      resetButton = document.createElement('button');
+      resetButton.textContent = 'Start new game';
+      document.body.appendChild(resetButton);
+      resetButton.addEventListener('click', resetGame);
+    }
+
+    function resetGame() {
+      guessCount = 1;
+      var resetParas = document.querySelectorAll('.resultParas p');
+      for(var i = 0 ; i < resetParas.length ; i++) {
+        resetParas[i].textContent='';
+      }
+
+      resetButton.parentNode.removeChild(resetButton);
+      guessField.disabled = false;
+      guessSubmit.disabled = false;
+      guessField.value='';
+      guessField.focus();
+      lastResult.style.backgroundColor='white';
+      randomNumber=Math.floor(Math.random() * 100) + 1;
+    }
+</script>
+
+</html>
